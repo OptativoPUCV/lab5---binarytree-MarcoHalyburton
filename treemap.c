@@ -83,7 +83,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
     }
 }
 
-TreeNode * minimum(TreeNode * x){
+TreeNode * minimum(TreeNode * x) {
     while (x->left != NULL) {
         x = x->left;
     }
@@ -106,8 +106,8 @@ void removeNode(TreeMap * tree, TreeNode* node) {
         } else {
             tree->root = NULL;
         }
-        free(node->pair); // Liberar solo la estructura Pair.
-        free(node); // Liberar el nodo.
+        free(node->pair);
+        free(node);
     } else if (node->left == NULL || node->right == NULL) {
         // Caso 2: Nodo con un hijo
         TreeNode * child = (node->left != NULL) ? node->left : node->right;
@@ -123,30 +123,9 @@ void removeNode(TreeMap * tree, TreeNode* node) {
         if (child != NULL) {
             child->parent = node->parent;
         }
-        free(node->pair); 
+        free(node->pair);
         free(node);
     } else {
-        // Caso 3: Nodo con dos hijos
-        TreeNode * successor = minimum(node->right);
-        // Copiar los datos del sucesor al nodo actual
-        node->pair = successor->pair;
-        if (successor->parent->left == successor) {
-            successor->parent->left = NULL;
-        } else {
-            successor->parent->right = NULL;
-        }
-        free(successor->pair); // Liberar la estructura Pair del sucesor.
-        free(successor); // Liberar el nodo del sucesor.
-    }
-}
-
-void eraseTreeMap(TreeMap * tree, void* key){
-    if (tree == NULL || tree->root == NULL) return;
-
-    TreeNode* node = searchTreeMap(tree, key);
-    if (node == NULL) return; // La clave no existe en el árbol
-
-    if (node->left != NULL && node->right != NULL) {
         // Caso 3: Nodo con dos hijos
         TreeNode * successor = minimum(node->right);
         // Copiar los datos del sucesor al nodo actual
@@ -154,17 +133,23 @@ void eraseTreeMap(TreeMap * tree, void* key){
         node->pair->value = successor->pair->value;
         // Luego, elimina el sucesor (que ahora está duplicado)
         removeNode(tree, successor);
-    } else {
-        // Casos 1 y 2: Nodo sin hijos o con un hijo
-        removeNode(tree, node);
     }
+}
+
+void eraseTreeMap(TreeMap * tree, void* key) {
+    if (tree == NULL || tree->root == NULL) return;
+
+    TreeNode* node = searchTreeMap(tree, key);
+    if (node == NULL) return; // La clave no existe en el árbol
+
+    removeNode(tree, node);
 }
 
 Pair * searchTreeMap(TreeMap * tree, void* key) {
     if (tree == NULL || tree->root == NULL || key == NULL) {
         return NULL;
     }
-    
+
     TreeNode * current = tree->root;
     while (current != NULL) {
         if (is_equal(tree, key, current->pair->key)) {
