@@ -128,15 +128,19 @@ void removeNode(TreeMap * tree, TreeNode* node) {
         if (child != NULL) {
             child->parent = node->parent;
         }
-        free(node->pair->key);
-        free(node->pair->value);
-        free(node->pair);
+        free(node->pair); 
         free(node);
     } else {
         // Caso 3: Nodo con dos hijos
         TreeNode * successor = minimum(node->right);
+        // Copiar los datos del sucesor al nodo actual
         node->pair = successor->pair;
-        removeNode(tree, successor);
+        if (successor->parent->left == successor) {
+            successor->parent->left = NULL;
+        } else {
+            successor->parent->right = NULL;
+        }
+        free(successor);
     }
 }
 
