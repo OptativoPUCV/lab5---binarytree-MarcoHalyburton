@@ -140,3 +140,16 @@ test.c:503:5: error: ‘main’ defined but not used [-Werror=unused-function]
 cc1: all warnings being treated as errors
 Compilation failed
 4c8f720
+Fri 15 Sep 2023 08:22:52 PM UTC: 
+ treemap.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+In file included from test.c:4:
+treemap.c: In function ‘removeNode’:
+treemap.c:135:36: error: expected ‘;’ before ‘}’ token
+  135 |         removeNode(tree, successor)
+      |                                    ^
+      |                                    ;
+  136 |     }
+      |     ~                               
+Compilation failed
+c2b59ca

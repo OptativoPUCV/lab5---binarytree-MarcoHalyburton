@@ -128,6 +128,12 @@ void removeNode(TreeMap * tree, TreeNode* node) {
         free(node->pair->value);
         free(node->pair);
         free(node);
+     } else {
+        // Caso 3: Nodo con dos hijos
+        TreeNode * successor = minimum(node->right);
+        node->pair = successor->pair;
+        removeNode(tree, successor)
+    }
 }
 
 void eraseTreeMap(TreeMap * tree, void* key){
