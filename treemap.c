@@ -35,7 +35,7 @@ TreeNode * createTreeNode(void* key, void * value) {
 }
 
 TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2)) {
-    TreeMap * map = (TreeMap *)malloc(sizeof(TreeMap));
+     TreeMap * map = (TreeMap *)malloc(sizeof(TreeMap));
     if (map == NULL) {
         return NULL;
     }
@@ -44,6 +44,7 @@ TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2)) {
     map->lower_than = lower_than;
     return map;
 }
+
 
 void insertTreeMap(TreeMap * tree, void* key, void * value) {
     if (tree == NULL || key == NULL || searchTreeMap(tree, key) != NULL) {
@@ -60,8 +61,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
         tree->current = new_node;
         return;
     }
-
-    TreeNode * current = tree->root;
+  TreeNode * current = tree->root;
     while (1) {
         if (tree->lower_than(key, current->pair->key)) {
             if (current->left == NULL) {
@@ -76,22 +76,23 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
                 current->right = new_node;
                 new_node->parent = current;
                 tree->current = new_node;
-                return;
             }
             current = current->right;
         }
     }
+
 }
 
-TreeNode * minimum(TreeNode * x) {
-    while (x->left != NULL) {
+TreeNode * minimum(TreeNode * x){
+  while (x->left != NULL) {
         x = x->left;
     }
     return x;
 }
 
+
 void removeNode(TreeMap * tree, TreeNode* node) {
-    if (tree == NULL || node == NULL) {
+   if (tree == NULL || node == NULL) {
         return;
     }
 
@@ -106,6 +107,8 @@ void removeNode(TreeMap * tree, TreeNode* node) {
         } else {
             tree->root = NULL;
         }
+        free(node->pair->key);
+        free(node->pair->value);
         free(node->pair);
         free(node);
     } else if (node->left == NULL || node->right == NULL) {
@@ -130,36 +133,29 @@ void removeNode(TreeMap * tree, TreeNode* node) {
         TreeNode * successor = minimum(node->right);
         // Copiar los datos del sucesor al nodo actual
         node->pair = successor->pair;
-        if (successor->parent != NULL) {
-            if (successor->parent->left == successor) {
-                successor->parent->left = NULL;
-            } else {
-                successor->parent->right = NULL;
-            }
+        if (successor->parent->left == successor) {
+            successor->parent->left = NULL;
         } else {
-            tree->root = NULL;
+            successor->parent->right = NULL;
         }
-        free(successor->pair);
         free(successor);
     }
 }
 
-void eraseTreeMap(TreeMap * tree, void* key) {
+void eraseTreeMap(TreeMap * tree, void* key){
     if (tree == NULL || tree->root == NULL) return;
 
-    TreeNode* node = searchTreeMap(tree, key);
-
-    if (node == NULL) return;
-
+    if (searchTreeMap(tree, key) == NULL) return;
+    TreeNode* node = tree->current;
     removeNode(tree, node);
+
 }
 
 Pair * searchTreeMap(TreeMap * tree, void* key) {
     if (tree == NULL || tree->root == NULL || key == NULL) {
         return NULL;
     }
-
-    TreeNode * current = tree->root;
+  TreeNode * current = tree->root;
     while (current != NULL) {
         if (is_equal(tree, key, current->pair->key)) {
             tree->current = current; // Actualizar el puntero current
@@ -173,7 +169,6 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
 
     return NULL; // La clave no se encontró en el árbol.
 }
-
 
 Pair * upperBound(TreeMap * tree, void* key) {
     return NULL;
