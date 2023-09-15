@@ -91,42 +91,7 @@ TreeNode * minimum(TreeNode * x) {
 }
 
 void removeNode(TreeMap * tree, TreeNode* node) {
-    if (tree == NULL || node == NULL) {
-        return;
-    }
-
-    TreeNode* parent = node->parent;
-
-    if (node->left == NULL && node->right == NULL) {
-        // Caso 1: Nodo sin hijos
-        if (parent != NULL) {
-            if (parent->left == node) {
-                parent->left = NULL;
-            } else {
-                parent->right = NULL;
-            }
-        }
-        free(node->pair);
-        free(node);
-    } else if (node->left != NULL && node->right != NULL) {
-        // Caso 3: Nodo con dos hijos
-        TreeNode* min_right = minimum(node->right);
-        node->pair = min_right->pair;
-        removeNode(tree, min_right);
-    } else {
-        // Caso 2: Nodo con un hijo
-        TreeNode* child = (node->left != NULL) ? node->left : node->right;
-        if (parent != NULL) {
-            if (parent->left == node) {
-                parent->left = child;
-            } else {
-                parent->right = child;
-            }
-        }
-        child->parent = parent;
-        free(node->pair);
-        free(node);
-    }
+    
 }
 
 void eraseTreeMap(TreeMap * tree, void* key) {
@@ -161,28 +126,7 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
 }
 
 Pair * upperBound(TreeMap * tree, void* key) {
-    if (tree == NULL || tree->root == NULL || key == NULL) {
-        return NULL;
-    }
-
-    TreeNode * current = tree->root;
-    TreeNode * upper_bound = NULL;
-
-    while (current != NULL) {
-        if (tree->lower_than(key, current->pair->key)) {
-            upper_bound = current;
-            current = current->left;
-        } else {
-            current = current->right;
-        }
-    }
-
-    if (upper_bound != NULL) {
-        tree->current = upper_bound;
-        return upper_bound->pair;
-    }
-
-    return NULL; // No se encontró un valor mayor o igual al proporcionado.
+    return NULL;
 }
 
 Pair * firstTreeMap(TreeMap * tree) {
