@@ -169,7 +169,6 @@ Pair * firstTreeMap(TreeMap * tree) {
     tree->current = min_node;
     return min_node->pair;
 }
-}
 
 Pair * nextTreeMap(TreeMap * tree) {
     return NULL;
