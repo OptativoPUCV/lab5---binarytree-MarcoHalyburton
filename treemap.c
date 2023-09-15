@@ -132,7 +132,7 @@ void removeNode(TreeMap * tree, TreeNode* node) {
         // Caso 3: Nodo con dos hijos
         TreeNode * successor = minimum(node->right);
         node->pair = successor->pair;
-        removeNode(tree, successor)
+        removeNode(tree, successor);
     }
 }
 
