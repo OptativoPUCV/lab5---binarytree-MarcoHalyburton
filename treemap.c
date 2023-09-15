@@ -126,8 +126,7 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
 }
 
 Pair * upperBound(TreeMap * tree, void* key) {
-    Pair * upperBound(TreeMap * tree, void* key) {
-    if (tree == NULL || tree->root == NULL || key == NULL) {
+     if (tree == NULL || tree->root == NULL || key == NULL) {
         return NULL;
     }
 
