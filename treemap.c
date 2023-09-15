@@ -109,10 +109,9 @@ void removeNode(TreeMap * tree, TreeNode* node) {
         } else {
             tree->root = NULL;
         }
-        free(node->pair->key);
-        free(node->pair->value);
-        free(node->pair);
-        free(node);
+        // No liberes node->pair->key ni node->pair->value aquí.
+        free(node->pair); // Libera solo la estructura Pair.
+        free(node); // Libera el nodo.
     } else if (node->left == NULL || node->right == NULL) {
         // Caso 2: Nodo con un hijo
         TreeNode * child = (node->left != NULL) ? node->left : node->right;
@@ -140,7 +139,8 @@ void removeNode(TreeMap * tree, TreeNode* node) {
         } else {
             successor->parent->right = NULL;
         }
-        free(successor);
+        free(successor->pair); // Libera la estructura Pair del sucesor.
+        free(successor); // Libera el nodo del sucesor.
     }
 }
 
