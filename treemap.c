@@ -132,10 +132,10 @@ void removeNode(TreeMap * tree, TreeNode* node) {
 
     // Caso 3: El nodo a eliminar tiene dos hijos.
     else {
-        TreeNode* successor = minimum(node->right); // Encontrar el sucesor in-order.
-        node->pair->key = successor->pair->key;     // Reemplazar la clave del nodo por la del sucesor.
-        node->pair->value = successor->pair->value; // Reemplazar el valor del nodo por el del sucesor.
-        removeNode(tree, successor);                // Eliminar el sucesor recursivamente.
+        TreeNode* successor = minimum(node->right); 
+        node->pair->key = successor->pair->key;    
+        node->pair->value = successor->pair->value;
+        removeNode(tree, successor);               
     }
 }
 
