@@ -673,3 +673,14 @@ test.c:594:7: error: implicit declaration of function ‘ub_test4’ [-Werror=im
 cc1: all warnings being treated as errors
 Compilation failed
 cab232f
+Fri 15 Sep 2023 08:51:56 PM UTC: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+treemap.c: In function ‘eraseTreeMap’:
+treemap.c:150:22: error: initialization of ‘TreeNode *’ from incompatible pointer type ‘Pair *’ [-Werror=incompatible-pointer-types]
+  150 |     TreeNode* node = searchTreeMap(tree, key);
+      |                      ^~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+9c3afed
