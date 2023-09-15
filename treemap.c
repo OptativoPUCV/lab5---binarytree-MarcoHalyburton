@@ -137,6 +137,10 @@ Pair * upperBound(TreeMap * tree, void* key) {
         if (tree->lower_than(key, current->pair->key)) {
             upper_bound = current; // Actualizar el candidato a upper_bound
             current = current->left;
+        } else if (is_equal(tree, key, current->pair->key)) {
+            // Se encontró una clave igual, lo consideramos como upper_bound
+            tree->current = current; // Actualizar el puntero current
+            return current->pair;
         } else {
             current = current->right;
         }
