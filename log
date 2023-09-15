@@ -37,3 +37,23 @@ test.c:503:5: error: ‘main’ defined but not used [-Werror=unused-function]
 cc1: all warnings being treated as errors
 Compilation failed
 b8bcda5
+Fri 15 Sep 2023 07:52:27 PM UTC: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+test.c: In function ‘searchTreeMap’:
+test.c:503:5: error: ‘main’ is normally a non-static function [-Werror=main]
+  503 | int main( int argc, char *argv[] ) {
+      |     ^~~~
+test.c:606:1: error: expected declaration or statement at end of input
+  606 | }
+      | ^
+test.c:606: error: control reaches end of non-void function [-Werror=return-type]
+  606 | }
+      | 
+At top level:
+test.c:503:5: error: ‘main’ defined but not used [-Werror=unused-function]
+  503 | int main( int argc, char *argv[] ) {
+      |     ^~~~
+cc1: all warnings being treated as errors
+Compilation failed
+ffcfbed

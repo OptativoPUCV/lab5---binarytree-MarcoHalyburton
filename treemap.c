@@ -88,7 +88,7 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
         
     }
 
-    return NULL // La clave no se encontró en el árbol.
+    return NULL; // La clave no se encontró en el árbol.
 }
 
 
