@@ -91,7 +91,53 @@ TreeNode * minimum(TreeNode * x) {
 }
 
 void removeNode(TreeMap * tree, TreeNode* node) {
-    
+    void removeNode(TreeMap * tree, TreeNode* node) {
+    if (tree == NULL || node == NULL) {
+        return;
+    }
+
+    // Caso 1: El nodo a eliminar es una hoja (no tiene hijos).
+    if (node->left == NULL && node->right == NULL) {
+        if (node->parent == NULL) {
+            // El nodo es la raíz del árbol.
+            tree->root = NULL;
+        } else {
+            if (node == node->parent->left) {
+                node->parent->left = NULL;
+            } else {
+                node->parent->right = NULL;
+            }
+        }
+        free(node->pair);
+        free(node);
+    }
+
+    // Caso 2: El nodo a eliminar tiene un solo hijo.
+    else if (node->left == NULL || node->right == NULL) {
+        TreeNode* child = (node->left != NULL) ? node->left : node->right;
+        if (node->parent == NULL) {
+            // El nodo es la raíz del árbol.
+            tree->root = child;
+            child->parent = NULL;
+        } else {
+            if (node == node->parent->left) {
+                node->parent->left = child;
+            } else {
+                node->parent->right = child;
+            }
+            child->parent = node->parent;
+        }
+        free(node->pair);
+        free(node);
+    }
+
+    // Caso 3: El nodo a eliminar tiene dos hijos.
+    else {
+        TreeNode* successor = minimum(node->right); // Encontrar el sucesor in-order.
+        node->pair->key = successor->pair->key;     // Reemplazar la clave del nodo por la del sucesor.
+        node->pair->value = successor->pair->value; // Reemplazar el valor del nodo por el del sucesor.
+        removeNode(tree, successor);                // Eliminar el sucesor recursivamente.
+    }
 }
 
 void eraseTreeMap(TreeMap * tree, void* key) {
