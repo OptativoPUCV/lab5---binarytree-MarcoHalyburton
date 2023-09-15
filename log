@@ -270,3 +270,406 @@ treemap.c:150:22: error: initialization of ‘TreeNode *’ from incompatible po
 cc1: all warnings being treated as errors
 Compilation failed
 14e3b72
+Fri 15 Sep 2023 08:51:11 PM UTC: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+treemap.c:1:1: error: stray ‘##’ in program
+    1 | ##include <stdio.h>
+      | ^~
+treemap.c:1:11: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘<’ token
+    1 | ##include <stdio.h>
+      |           ^
+In file included from treemap.c:4,
+                 from test.c:4:
+treemap.h:11:1: error: unknown type name ‘TreeMap’
+   11 | TreeMap * createTreeMap(int (*lower_than_int) (void* key1, void* key2));
+      | ^~~~~~~
+treemap.h:13:20: error: unknown type name ‘TreeMap’
+   13 | void insertTreeMap(TreeMap * tree, void* key, void * value);
+      |                    ^~~~~~~
+treemap.h:15:19: error: unknown type name ‘TreeMap’
+   15 | void eraseTreeMap(TreeMap * tree, void* key);
+      |                   ^~~~~~~
+treemap.h:17:22: error: unknown type name ‘TreeMap’
+   17 | Pair * searchTreeMap(TreeMap * tree, void* key);
+      |                      ^~~~~~~
+treemap.h:19:19: error: unknown type name ‘TreeMap’
+   19 | Pair * upperBound(TreeMap * tree, void* key);
+      |                   ^~~~~~~
+treemap.h:21:21: error: unknown type name ‘TreeMap’
+   21 | Pair * firstTreeMap(TreeMap * tree);
+      |                     ^~~~~~~
+treemap.h:23:20: error: unknown type name ‘TreeMap’
+   23 | Pair * nextTreeMap(TreeMap * tree);
+      |                    ^~~~~~~
+In file included from test.c:4:
+treemap.c:21:14: error: unknown type name ‘TreeMap’
+   21 | int is_equal(TreeMap* tree, void* key1, void* key2){
+      |              ^~~~~~~
+treemap.c:37:1: error: unknown type name ‘TreeMap’; use ‘struct’ keyword to refer to the type
+   37 | TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2)) {
+      | ^~~~~~~
+      | struct 
+treemap.c: In function ‘createTreeMap’:
+treemap.c:38:5: error: unknown type name ‘TreeMap’; use ‘struct’ keyword to refer to the type
+   38 |     TreeMap * map = (TreeMap *)malloc(sizeof(TreeMap));
+      |     ^~~~~~~
+      |     struct 
+treemap.c:38:22: error: ‘TreeMap’ undeclared (first use in this function)
+   38 |     TreeMap * map = (TreeMap *)malloc(sizeof(TreeMap));
+      |                      ^~~~~~~
+treemap.c:38:22: note: each undeclared identifier is reported only once for each function it appears in
+treemap.c:38:31: error: expected expression before ‘)’ token
+   38 |     TreeMap * map = (TreeMap *)malloc(sizeof(TreeMap));
+      |                               ^
+treemap.c:42:8: error: request for member ‘root’ in something not a structure or union
+   42 |     map->root = NULL;
+      |        ^~
+treemap.c:43:8: error: request for member ‘current’ in something not a structure or union
+   43 |     map->current = NULL;
+      |        ^~
+treemap.c:44:8: error: request for member ‘lower_than’ in something not a structure or union
+   44 |     map->lower_than = lower_than;
+      |        ^~
+treemap.c: At top level:
+treemap.c:48:20: error: unknown type name ‘TreeMap’
+   48 | void insertTreeMap(TreeMap * tree, void* key, void * value) {
+      |                    ^~~~~~~
+treemap.c:93:17: error: unknown type name ‘TreeMap’
+   93 | void removeNode(TreeMap * tree, TreeNode* node) {
+      |                 ^~~~~~~
+treemap.c:147:19: error: unknown type name ‘TreeMap’
+  147 | void eraseTreeMap(TreeMap * tree, void* key) {
+      |                   ^~~~~~~
+treemap.c:157:22: error: unknown type name ‘TreeMap’
+  157 | Pair * searchTreeMap(TreeMap * tree, void* key) {
+      |                      ^~~~~~~
+treemap.c:178:19: error: unknown type name ‘TreeMap’
+  178 | Pair * upperBound(TreeMap * tree, void* key) {
+      |                   ^~~~~~~
+treemap.c:182:21: error: unknown type name ‘TreeMap’
+  182 | Pair * firstTreeMap(TreeMap * tree) {
+      |                     ^~~~~~~
+treemap.c:186:20: error: unknown type name ‘TreeMap’
+  186 | Pair * nextTreeMap(TreeMap * tree) {
+      |                    ^~~~~~~
+test.c:58:1: error: unknown type name ‘TreeMap’; use ‘struct’ keyword to refer to the type
+   58 | TreeMap* initializeTree(){
+      | ^~~~~~~
+      | struct 
+test.c: In function ‘initializeTree’:
+test.c:60:5: error: unknown type name ‘TreeMap’; use ‘struct’ keyword to refer to the type
+   60 |     TreeMap* tree=(TreeMap *)malloc(sizeof(TreeMap));
+      |     ^~~~~~~
+      |     struct 
+test.c:60:20: error: ‘TreeMap’ undeclared (first use in this function)
+   60 |     TreeMap* tree=(TreeMap *)malloc(sizeof(TreeMap));
+      |                    ^~~~~~~
+test.c:60:29: error: expected expression before ‘)’ token
+   60 |     TreeMap* tree=(TreeMap *)malloc(sizeof(TreeMap));
+      |                             ^
+test.c:61:9: error: request for member ‘lower_than’ in something not a structure or union
+   61 |     tree->lower_than = lower_than_int;
+      |         ^~
+test.c:63:9: error: request for member ‘root’ in something not a structure or union
+   63 |     tree->root=createTreeNode(&p->id, p);
+      |         ^~
+test.c:65:9: error: request for member ‘root’ in something not a structure or union
+   65 |     tree->root->right=createTreeNode(&p->id, p);
+      |         ^~
+test.c:66:9: error: request for member ‘root’ in something not a structure or union
+   66 |     tree->root->right->parent=tree->root;
+      |         ^~
+test.c:66:35: error: request for member ‘root’ in something not a structure or union
+   66 |     tree->root->right->parent=tree->root;
+      |                                   ^~
+test.c:68:9: error: request for member ‘root’ in something not a structure or union
+   68 |     tree->root->right->left=createTreeNode(&p->id, p);
+      |         ^~
+test.c:69:9: error: request for member ‘root’ in something not a structure or union
+   69 |     tree->root->right->left->parent=tree->root->right;
+      |         ^~
+test.c:69:41: error: request for member ‘root’ in something not a structure or union
+   69 |     tree->root->right->left->parent=tree->root->right;
+      |                                         ^~
+test.c:71:9: error: request for member ‘root’ in something not a structure or union
+   71 |     tree->root->left=createTreeNode(&p->id, p);
+      |         ^~
+test.c:72:9: error: request for member ‘root’ in something not a structure or union
+   72 |     tree->root->left->parent=tree->root;
+      |         ^~
+test.c:72:34: error: request for member ‘root’ in something not a structure or union
+   72 |     tree->root->left->parent=tree->root;
+      |                                  ^~
+test.c: In function ‘create_test1’:
+test.c:77:5: error: unknown type name ‘TreeMap’; use ‘struct’ keyword to refer to the type
+   77 |     TreeMap* t = createTreeMap(lower_than_int);
+      |     ^~~~~~~
+      |     struct 
+test.c:85:9: error: request for member ‘root’ in something not a structure or union
+   85 |     if(t->root!=NULL){
+      |         ^~
+test.c:93:9: error: request for member ‘lower_than’ in something not a structure or union
+   93 |     if(t->lower_than != lower_than_int || t->lower_than(&i,&j) !=1 ) {
+      |         ^~
+test.c:93:44: error: request for member ‘lower_than’ in something not a structure or union
+   93 |     if(t->lower_than != lower_than_int || t->lower_than(&i,&j) !=1 ) {
+      |                                            ^~
+test.c: At top level:
+test.c:101:18: error: unknown type name ‘TreeMap’
+  101 | int search_test1(TreeMap* tree){ //key se encuentra en raiz
+      |                  ^~~~~~~
+test.c:120:18: error: unknown type name ‘TreeMap’
+  120 | int search_test2(TreeMap* tree){ //key en root->right
+      |                  ^~~~~~~
+test.c:139:18: error: unknown type name ‘TreeMap’
+  139 | int search_test3(TreeMap* tree){ //key en root->right->left
+      |                  ^~~~~~~
+test.c:159:18: error: unknown type name ‘TreeMap’
+  159 | int search_test4(TreeMap* tree){ //key no existe
+      |                  ^~~~~~~
+test.c:173:18: error: unknown type name ‘TreeMap’
+  173 | int insert_test1(TreeMap* tree){//dato repetido
+      |                  ^~~~~~~
+test.c: In function ‘insert_test2’:
+test.c:188:5: error: unknown type name ‘TreeMap’; use ‘struct’ keyword to refer to the type
+  188 |     TreeMap * tree = initializeTree();
+      |     ^~~~~~~
+      |     struct 
+test.c:192:5: error: implicit declaration of function ‘insertTreeMap’ [-Werror=implicit-function-declaration]
+  192 |     insertTreeMap(tree, &p->id, p);
+      |     ^~~~~~~~~~~~~
+test.c:195:12: error: request for member ‘root’ in something not a structure or union
+  195 |     if(tree->root->left->left == NULL ||
+      |            ^~
+test.c:196:16: error: request for member ‘root’ in something not a structure or union
+  196 |            tree->root->left->left->pair->value!=p) {
+      |                ^~
+test.c:202:12: error: request for member ‘root’ in something not a structure or union
+  202 |     if(tree->root->left->left != NULL &&
+      |            ^~
+test.c:203:23: error: request for member ‘root’ in something not a structure or union
+  203 |             (int*)tree->root->left->left->pair->key!=&p->id) {
+      |                       ^~
+test.c:208:12: error: request for member ‘root’ in something not a structure or union
+  208 |     if(tree->root->left->left->parent !=
+      |            ^~
+test.c:209:17: error: request for member ‘root’ in something not a structure or union
+  209 |             tree->root->left){
+      |                 ^~
+test.c:214:12: error: request for member ‘current’ in something not a structure or union
+  214 |     if(tree->current != tree->root->left->left){
+      |            ^~
+test.c:214:29: error: request for member ‘root’ in something not a structure or union
+  214 |     if(tree->current != tree->root->left->left){
+      |                             ^~
+test.c: In function ‘minimum_test’:
+test.c:224:5: error: unknown type name ‘TreeMap’; use ‘struct’ keyword to refer to the type
+  224 |     TreeMap * tree = initializeTree();
+      |     ^~~~~~~
+      |     struct 
+test.c:225:31: error: request for member ‘root’ in something not a structure or union
+  225 |     TreeNode* n = minimum(tree->root);
+      |                               ^~
+test.c:239:21: error: request for member ‘root’ in something not a structure or union
+  239 |     n = minimum(tree->root->left);
+      |                     ^~
+test.c:247:9: error: request for member ‘root’ in something not a structure or union
+  247 |     tree->root->left->left=createTreeNode(&p->id, p);
+      |         ^~
+test.c:248:9: error: request for member ‘root’ in something not a structure or union
+  248 |     tree->root->left->left->parent=tree->root->left;
+      |         ^~
+test.c:248:40: error: request for member ‘root’ in something not a structure or union
+  248 |     tree->root->left->left->parent=tree->root->left;
+      |                                        ^~
+test.c:250:21: error: request for member ‘root’ in something not a structure or union
+  250 |     n = minimum(tree->root);
+      |                     ^~
+test.c: In function ‘erase_test1’:
+test.c:263:5: error: unknown type name ‘TreeMap’; use ‘struct’ keyword to refer to the type
+  263 |     TreeMap * tree = initializeTree();
+      |     ^~~~~~~
+      |     struct 
+test.c:267:5: error: implicit declaration of function ‘eraseTreeMap’; did you mean ‘createTreeMap’? [-Werror=implicit-function-declaration]
+  267 |     eraseTreeMap(tree, &key);
+      |     ^~~~~~~~~~~~
+      |     createTreeMap
+test.c:268:12: error: request for member ‘root’ in something not a structure or union
+  268 |     if(tree->root->left != NULL) {
+      |            ^~
+test.c: In function ‘erase_test2’:
+test.c:277:5: error: unknown type name ‘TreeMap’; use ‘struct’ keyword to refer to the type
+  277 |     TreeMap * tree = initializeTree();
+      |     ^~~~~~~
+      |     struct 
+test.c:283:23: error: request for member ‘root’ in something not a structure or union
+  283 |     if( * ((int*) tree->root->right->pair->key) != 6980) {
+      |                       ^~
+test.c:289:14: error: request for member ‘root’ in something not a structure or union
+  289 |     if(  tree->root->right->parent != tree->root){
+      |              ^~
+test.c:289:43: error: request for member ‘root’ in something not a structure or union
+  289 |     if(  tree->root->right->parent != tree->root){
+      |                                           ^~
+test.c: In function ‘erase_test3’:
+test.c:298:5: error: unknown type name ‘TreeMap’; use ‘struct’ keyword to refer to the type
+  298 |     TreeMap * tree = initializeTree();
+      |     ^~~~~~~
+      |     struct 
+test.c:304:23: error: request for member ‘root’ in something not a structure or union
+  304 |     if( * ((int*) tree->root->pair->key) != 6980){
+      |                       ^~
+test.c:309:23: error: request for member ‘root’ in something not a structure or union
+  309 |     if( * ((int*) tree->root->right->pair->key) != 8213){
+      |                       ^~
+test.c: At top level:
+test.c:317:17: error: unknown type name ‘TreeMap’
+  317 | int first_test1(TreeMap * tree){
+      |                 ^~~~~~~
+test.c: In function ‘first_test2’:
+test.c:334:5: error: unknown type name ‘TreeMap’; use ‘struct’ keyword to refer to the type
+  334 |     TreeMap * tree = initializeTree();
+      |     ^~~~~~~
+      |     struct 
+test.c:337:9: error: request for member ‘root’ in something not a structure or union
+  337 |     tree->root->left->left=createTreeNode(&p->id, p);
+      |         ^~
+test.c:338:9: error: request for member ‘root’ in something not a structure or union
+  338 |     tree->root->left->left->parent=tree->root->left;
+      |         ^~
+test.c:338:40: error: request for member ‘root’ in something not a structure or union
+  338 |     tree->root->left->left->parent=tree->root->left;
+      |                                        ^~
+test.c:340:16: error: implicit declaration of function ‘firstTreeMap’ [-Werror=implicit-function-declaration]
+  340 |     Pair* pair=firstTreeMap(tree);
+      |                ^~~~~~~~~~~~
+test.c:340:16: error: initialization of ‘Pair *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+test.c: In function ‘next_test1’:
+test.c:352:5: error: unknown type name ‘TreeMap’; use ‘struct’ keyword to refer to the type
+  352 |     TreeMap * tree = initializeTree();
+      |     ^~~~~~~
+      |     struct 
+test.c:355:9: error: request for member ‘root’ in something not a structure or union
+  355 |     tree->root->left->right=createTreeNode(&p->id, p);
+      |         ^~
+test.c:356:9: error: request for member ‘root’ in something not a structure or union
+  356 |     tree->root->left->right->parent=tree->root->left;
+      |         ^~
+test.c:356:41: error: request for member ‘root’ in something not a structure or union
+  356 |     tree->root->left->right->parent=tree->root->left;
+      |                                         ^~
+test.c:359:9: error: request for member ‘current’ in something not a structure or union
+  359 |     tree->current = tree->root->left;
+      |         ^~
+test.c:359:25: error: request for member ‘root’ in something not a structure or union
+  359 |     tree->current = tree->root->left;
+      |                         ^~
+test.c:360:15: error: implicit declaration of function ‘nextTreeMap’; did you mean ‘createTreeMap’? [-Werror=implicit-function-declaration]
+  360 |     Pair* aux=nextTreeMap(tree);
+      |               ^~~~~~~~~~~
+      |               createTreeMap
+test.c:360:15: error: initialization of ‘Pair *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+test.c: In function ‘next_test2’:
+test.c:377:5: error: unknown type name ‘TreeMap’; use ‘struct’ keyword to refer to the type
+  377 |     TreeMap * tree = initializeTree();
+      |     ^~~~~~~
+      |     struct 
+test.c:379:9: error: request for member ‘current’ in something not a structure or union
+  379 |     tree->current = tree->root;
+      |         ^~
+test.c:379:25: error: request for member ‘root’ in something not a structure or union
+  379 |     tree->current = tree->root;
+      |                         ^~
+test.c:380:15: error: initialization of ‘Pair *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+  380 |     Pair* aux=nextTreeMap(tree);
+      |               ^~~~~~~~~~~
+test.c:388:8: error: assignment to ‘Pair *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+  388 |     aux=nextTreeMap(tree);
+      |        ^
+test.c:396:8: error: assignment to ‘Pair *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+  396 |     aux=nextTreeMap(tree);
+      |        ^
+test.c: In function ‘next_test3’:
+test.c:406:5: error: unknown type name ‘TreeMap’; use ‘struct’ keyword to refer to the type
+  406 |     TreeMap * tree = initializeTree();
+      |     ^~~~~~~
+      |     struct 
+test.c:409:9: error: request for member ‘root’ in something not a structure or union
+  409 |     tree->root->left->right=createTreeNode(&p->id, p);
+      |         ^~
+test.c:410:9: error: request for member ‘root’ in something not a structure or union
+  410 |     tree->root->left->right->parent=tree->root->left;
+      |         ^~
+test.c:410:41: error: request for member ‘root’ in something not a structure or union
+  410 |     tree->root->left->right->parent=tree->root->left;
+      |                                         ^~
+test.c:412:9: error: request for member ‘current’ in something not a structure or union
+  412 |     tree->current=tree->root->left->right;
+      |         ^~
+test.c:412:23: error: request for member ‘root’ in something not a structure or union
+  412 |     tree->current=tree->root->left->right;
+      |                       ^~
+test.c:414:15: error: initialization of ‘Pair *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+  414 |     Pair* aux=nextTreeMap(tree);
+      |               ^~~~~~~~~~~
+test.c: At top level:
+test.c:425:14: error: unknown type name ‘TreeMap’
+  425 | int ub_test1(TreeMap* tree){ //el dato existe
+      |              ^~~~~~~
+test.c:445:14: error: unknown type name ‘TreeMap’
+  445 | int ub_test2(TreeMap* tree){
+      |              ^~~~~~~
+test.c:466:14: error: unknown type name ‘TreeMap’
+  466 | int ub_test3(TreeMap* tree){
+      |              ^~~~~~~
+test.c:487:14: error: unknown type name ‘TreeMap’
+  487 | int ub_test4(TreeMap* tree){
+      |              ^~~~~~~
+test.c: In function ‘main’:
+test.c:504:5: error: unknown type name ‘TreeMap’; use ‘struct’ keyword to refer to the type
+  504 |     TreeMap * tree;
+      |     ^~~~~~~
+      |     struct 
+test.c:525:21: error: implicit declaration of function ‘search_test1’; did you mean ‘erase_test1’? [-Werror=implicit-function-declaration]
+  525 |       all_correct &=search_test1(tree)&& //5239: auto
+      |                     ^~~~~~~~~~~~
+      |                     erase_test1
+test.c:526:7: error: implicit declaration of function ‘search_test2’; did you mean ‘erase_test2’? [-Werror=implicit-function-declaration]
+  526 |       search_test2(tree)&& //8213: rayo
+      |       ^~~~~~~~~~~~
+      |       erase_test2
+test.c:527:7: error: implicit declaration of function ‘search_test3’; did you mean ‘erase_test3’? [-Werror=implicit-function-declaration]
+  527 |       search_test3(tree)&& //6980: hoja
+      |       ^~~~~~~~~~~~
+      |       erase_test3
+test.c:528:7: error: implicit declaration of function ‘search_test4’ [-Werror=implicit-function-declaration]
+  528 |       search_test4(tree)&& //clave no existe
+      |       ^~~~~~~~~~~~
+test.c:538:22: error: implicit declaration of function ‘insert_test1’; did you mean ‘insert_test2’? [-Werror=implicit-function-declaration]
+  538 |       all_correct &= insert_test1(tree)&&
+      |                      ^~~~~~~~~~~~
+      |                      insert_test2
+test.c:565:21: error: implicit declaration of function ‘first_test1’; did you mean ‘first_test2’? [-Werror=implicit-function-declaration]
+  565 |       all_correct &=first_test1(tree)&&
+      |                     ^~~~~~~~~~~
+      |                     first_test2
+test.c:590:21: error: implicit declaration of function ‘ub_test1’; did you mean ‘next_test1’? [-Werror=implicit-function-declaration]
+  590 |       all_correct &=ub_test1(tree)&&
+      |                     ^~~~~~~~
+      |                     next_test1
+test.c:591:7: error: implicit declaration of function ‘ub_test2’; did you mean ‘next_test2’? [-Werror=implicit-function-declaration]
+  591 |       ub_test2(tree)&&
+      |       ^~~~~~~~
+      |       next_test2
+test.c:592:7: error: implicit declaration of function ‘ub_test3’; did you mean ‘next_test3’? [-Werror=implicit-function-declaration]
+  592 |       ub_test3(tree)&&
+      |       ^~~~~~~~
+      |       next_test3
+test.c:594:7: error: implicit declaration of function ‘ub_test4’ [-Werror=implicit-function-declaration]
+  594 |       ub_test4(tree)&&
+      |       ^~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+cab232f
