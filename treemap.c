@@ -83,9 +83,11 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
         if (is_equal(tree, key, current->pair->key)) {
             tree->current = current; // Actualizar el puntero current
             return current->pair;
-        } else (tree->lower_than(key, current->pair->key)) {
+        } else if (tree->lower_than(key, current->pair->key)) {
             current = current->left;
-        
+        } else {
+            current = current->right;
+        }
     }
 
     return NULL; // La clave no se encontró en el árbol.
