@@ -149,7 +149,7 @@ void eraseTreeMap(TreeMap * tree, void* key) {
      if (tree == NULL || tree->root == NULL) return;
 
     TreeNode* node = searchTreeMap(tree, key);
-    if (node == NULL) return; // La clave no existe en el árbol
+    if (node == NULL) return;
 
     removeNode(tree, node);
 }
