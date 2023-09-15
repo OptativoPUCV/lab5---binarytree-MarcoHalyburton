@@ -126,6 +126,7 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
 }
 
 Pair * upperBound(TreeMap * tree, void* key) {
+    Pair * upperBound(TreeMap * tree, void* key) {
     if (tree == NULL || tree->root == NULL || key == NULL) {
         return NULL;
     }
@@ -135,7 +136,7 @@ Pair * upperBound(TreeMap * tree, void* key) {
 
     while (current != NULL) {
         if (tree->lower_than(key, current->pair->key)) {
-            upper_bound = current;
+            upper_bound = current; // Actualizar el candidato a upper_bound
             current = current->left;
         } else {
             current = current->right;
@@ -143,11 +144,11 @@ Pair * upperBound(TreeMap * tree, void* key) {
     }
 
     if (upper_bound != NULL) {
-        tree->current = upper_bound;
+        tree->current = upper_bound; // Actualizar el puntero current
         return upper_bound->pair;
+    } else {
+        return NULL; // No se encontró un valor mayor o igual en el árbol.
     }
-
-    return NULL;
 }
 
 Pair * firstTreeMap(TreeMap * tree) {
