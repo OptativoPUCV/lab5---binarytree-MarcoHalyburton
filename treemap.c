@@ -159,7 +159,6 @@ void eraseTreeMap(TreeMap * tree, void* key){
         removeNode(tree, node);
     }
 }
-}
 
 Pair * searchTreeMap(TreeMap * tree, void* key) {
     if (tree == NULL || tree->root == NULL || key == NULL) {
